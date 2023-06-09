@@ -1,3 +1,4 @@
+<%@page import="utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,20 @@
 	String id = request.getParameter("userid");
 	String pw = request.getParameter("userpw");
 	
+	String saveYN = request.getParameter("save_check");
+	
+	
+	// 체크박스가 체크되었을 경우, 아이디를 쿠키에 저장한다.
+	if("Y".equals(saveYN)){
+			
+		CookieManager.makeCookie(response, "userId", id, 60*60*24*7);
+		
+	}
+	
+	
 	if ("abc".equals(id) && "123".equals(pw)) {
+		
+		
 		
 		// 로그인 성공
 		// 세션에 저장

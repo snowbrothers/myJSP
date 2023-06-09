@@ -1,3 +1,4 @@
+<%@page import="utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -36,6 +37,9 @@
 				<div class='side1'>
 					
 					<%
+						// 쿠키에 저장된 아이디가 있으면 아이디를 텍스트필드에  value 값으로 출력
+						
+					
 						// <!--  비밀번호 불일치 : 메세지 처리  -->
 						String loginErr = request.getParameter("loginErr");
 						if("Y".equals(loginErr)){
@@ -68,9 +72,18 @@
 						
 						String id = (String)session.getAttribute("id");
 						
+						String userId = CookieManager.readCookie(request, "userId");
+						
+						
+						
+						
 						if(id !=null && id != ""){
 					%>		
-						<% 	out.print(id + "님 환영합니다.");%>
+						<% 	
+							//CookieManager.deleteCookie(response, "userId");
+							out.print("param : " + id + "님 환영합니다. <br>"); 
+							out.print("cookie : " + userId + "님 환영합니다.");
+														%>
 							
 							
 							<!--  <button onclick ="location.href='logout.jsp'">로그아웃</button>-->
@@ -89,7 +102,7 @@
 	
 					<div id='login'>
 
-					<input type="text" name="userid" id="userid" placeholder='ID를 입력해주세요.'> 
+					<input type="text" name="userid" id="userid" placeholder='ID를 입력해주세요.' value="<%=userId%>"> 
 					<input type="password" name="userpw" id="userpw" placeholder='PW를 입력해주세요.'>
 
 						</div>
@@ -99,7 +112,10 @@
 				</div>
 		</div>
 	<div id='info'>
-		<a href="">회원가입</a> <a href="">ID찾기</a> <a href="">PW찾기</a>
+		<!-- 선택되었을때만 서버에 값이 전달됩니다.
+			미선택시 null 출력 -->
+		<input type="checkbox" name="save_check" value="Y" <%= !userId.equals("")?"checked":"" %>> 아이디 저장하기
+		<!-- <a href="">회원가입</a> <a href="">ID찾기</a> <a href="">PW찾기</a> -->
 	</div>
 	</form>
 	<%	} 	%>
