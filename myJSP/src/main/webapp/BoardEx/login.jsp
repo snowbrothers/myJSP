@@ -4,19 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
-
-	
-
-	<% 
-	session.invalidate();
-	request.getSession(true);
-	response.sendRedirect("gogreen.jsp");
-	
-	%>
-	
+ 	
+	<form action="LoginAction.jsp" method="post" name="loginForm">
 		
+	</form>
+
 </body>
 </html>

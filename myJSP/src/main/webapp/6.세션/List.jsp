@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>List</title>
 </head>
 <body>
+<jsp:include page="Link.jsp"/>
+
 
 </body>
 </html>

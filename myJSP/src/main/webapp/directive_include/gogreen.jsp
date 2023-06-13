@@ -42,6 +42,7 @@
 					
 						// <!--  비밀번호 불일치 : 메세지 처리  -->
 						String loginErr = request.getParameter("loginErr");
+						
 						if("Y".equals(loginErr)){
 					
 							%>
