@@ -8,8 +8,11 @@
 </head>
 <body>
  	
-	<form action="LoginAction.jsp" method="post" name="loginForm">
-		
+	<form action="LoginAction.jsp" method="post" name="loginForm"
+		onsubmit="return validateForm(this);">
+		아이디 : <input type="text" name="user_id" required="required"/><br>
+		패스워드 : <input type="password" name="user_pw" required="required"/>
+		<input type="submit" value="로그인"/>
 	</form>
 
 </body>

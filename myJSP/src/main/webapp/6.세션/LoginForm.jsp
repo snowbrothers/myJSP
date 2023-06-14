@@ -15,20 +15,22 @@
 
 		out.print(request.getAttribute("LoginErrMsg"));
 	}
+	
 	%>
 
 
 
 	<%
+	
 	String id = (String) session.getAttribute("UserId");
 
 	if (id != null && id != "") {
+
 	%>
 
 	<%
-	out.print("<h2>" + id + "님 환영합니다." + "</h2>");
 	
-	
+	out.print("<h2>" + id + "님 환영합니다." + "</h2>");	
 	
 	%>
 
