@@ -17,6 +17,7 @@
         <tr>
             <td>제목</td>
             <td>
+            	<!-- value 값으로 기존내용을 설정하면댐. -->
                 <input type="text" name="title" style="width: 90%;" />
                 
             </td>
