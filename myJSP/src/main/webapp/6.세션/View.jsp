@@ -26,6 +26,7 @@
 
 		function deletePost() {
 				
+			// 확인 버튼을 누르면 true 를 반환
 			var res = confirm("정말로 삭제하시겠습니까?");
 			if(res){
 				location.href="DeleteProcess.jsp?num=<%=board.getNum()%>"
@@ -43,7 +44,7 @@
 	<h2>회원제 게시판 - 상세보기</h2>
 	
 
-	<table border = 1 width="90%">
+	<table border = "1" width="90%">
 
 		<tr>
 			<td>번호</td>
@@ -66,7 +67,7 @@
 
 		<tr>
 			<td>내용</td>
-			<td colspan="3"><%=board.getContent()%></td>
+			<td colspan="3"><%=board.getContent().replace("\r\n","<br/>")%></td>
 		</tr>
 
 		<tr align="center">

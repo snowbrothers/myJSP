@@ -9,7 +9,12 @@
 <title>LoginProcess</title>
 </head>
 <body>
+
+	<jsp:include page="Link.jsp" />
+
 <%
+	// 실질적인 로그인 처리
+	
 	// getParameter << 접근 폼에 있는 요소를 가지고온다.
 	String id = request.getParameter("user_id");
 	String pw = request.getParameter("user_pw");
@@ -25,7 +30,7 @@
 		session.setAttribute("UserId", member.getId());
 		session.setAttribute("member", member);
 		
-		 response.sendRedirect("Board.jsp");
+		 out.print("<h2>"+member.getId()+"님 환영합니다!</h2>");
 	
 	}else { 
 		// 로그인 실패 -> loginForm 페이지로 이동

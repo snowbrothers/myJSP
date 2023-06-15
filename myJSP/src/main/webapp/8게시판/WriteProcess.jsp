@@ -1,3 +1,4 @@
+<%@page import="dao.NewBoardDao"%>
 <%@page import="common.JSFunction"%>
 <%@page import="dto.Member"%>
 <%@page import="dao.BoardDao"%>
@@ -12,14 +13,14 @@
 </head>
 <body>
 
-	<%@include file="IsLogin.jsp"%>
+	<%@include file="../6.세션/IsLogin.jsp"%>
 
 	<%
 	request.setCharacterEncoding("utf-8");
 
 	Board board = new Board();// 빈객체 생성.
 
-	String id = (String)session.getAttribute("UserId");
+	String id = (String) session.getAttribute("UserId");
 
 	// 1. 입력값을 받아서 DTO 객체를생성
 
@@ -32,7 +33,7 @@
 
 	// 2. DAO.insert(...) 호출 : DB에 게시글을 등록하고 결과를 숫자로 반환한다.
 
-	BoardDao dao = new BoardDao();
+	NewBoardDao dao = new NewBoardDao();
 	int res = dao.insert(board);
 
 	// 3. 등록성공 : 리스트페이지로 이동
@@ -40,7 +41,7 @@
 	if (res > 0) {
 
 		JSFunction.alertLocation("게시글이 등록 되었습니다."
-					, "Board.jsp"
+					, "List.jsp"
 					, out);
 
 	} else {

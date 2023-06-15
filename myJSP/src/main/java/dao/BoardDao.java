@@ -253,7 +253,7 @@ public class BoardDao {
 	}
 	
 	
-	public int EditWrite(String title, String content, String num) {
+	public int EditWrite(Board board) {
 		
 		int res = 0;
 		
@@ -267,9 +267,9 @@ public class BoardDao {
 			try(Connection conn = DBConnPool.getConnection();
 					PreparedStatement psmt = conn.prepareStatement(sql);) {
 			
-				psmt.setString(1, title);
-				psmt.setString(2, content);
-				psmt.setString(3, num);
+				psmt.setString(1, board.getTitle());
+				psmt.setString(2, board.getContent());
+				psmt.setString(3, board.getNum());
 				
 				res = psmt.executeUpdate();
 				

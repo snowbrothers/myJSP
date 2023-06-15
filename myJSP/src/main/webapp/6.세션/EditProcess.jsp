@@ -11,19 +11,31 @@
 </head>
 <body>
 
+	<!-- 수정 처리화면 -->
+
 <%
+	
 	request.setCharacterEncoding("utf-8");
 	
 	BoardDao dao = new BoardDao();
 	Board board = new Board();
-	String num = request.getParameter("num");
-
-	String title = request.getParameter("title");
-	String content = request.getParameter("content");
 	
-	dao.EditWrite(title, content, num);
+	String num = request.getParameter("num");
+	
+	board.setTitle(request.getParameter("title"));
+	board.setContent(request.getParameter("content"));
+	board.setNum(num);
+	
+	int res = dao.EditWrite(board);
 		
-	JSFunction.alertLocation("게시글이 수정되었습니다."+num, "View.jsp?num="+num, out);
+	if(res > 0){
+	
+		JSFunction.alertLocation("게시글이 수정되었습니다."+num, "View.jsp?num="+num, out);
+		
+	}else{
+		JSFunction.alertBack("게시글 수정중 오류가 발생하였습니다.", out);
+	}
+	
 	
 %>
 
