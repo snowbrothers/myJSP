@@ -60,7 +60,7 @@ public class BoardDao {
 				
 				
 				// 게시물의 한 행을 DTO에 저장
-				
+				 
 				Board board = new Board();
 				
 				board.setNum(rs.getString("num"));

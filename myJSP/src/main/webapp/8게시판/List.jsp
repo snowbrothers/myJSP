@@ -30,7 +30,7 @@
 		List<Board> list = ndao.getListPage(criteria);
 	
 	%>
-	<h2>NEW 게시판</h2>
+	<h2>NEW 게시판d</h2>
     <h2>목록 보기(List)</h2>
     <!-- 검색폼 --> 
     <form method="get">  

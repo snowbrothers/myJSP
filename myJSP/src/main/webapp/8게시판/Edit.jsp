@@ -13,7 +13,7 @@
 
     <table border="1" width="90%">
         <tr>
-            <td>제목</td>
+            <td>제목d</td>
             <td>
                 <input type="text" name="title" style="width: 90%;"/> 
             </td>

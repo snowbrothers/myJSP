@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원제 게시판</title>
+<title>회원제 게시판s</title>
 
 </head>
 <body>

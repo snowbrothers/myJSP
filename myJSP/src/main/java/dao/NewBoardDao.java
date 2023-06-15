@@ -166,7 +166,7 @@ public class NewBoardDao {
 	public Board selectOne(String num) {
 		String sql ="select * from board where num=?";
 		Board board = null;
-		
+		 
 		try(Connection conn = DBConnPool.getConnection();
 				PreparedStatement psmt= conn.prepareStatement(sql);) {
 			

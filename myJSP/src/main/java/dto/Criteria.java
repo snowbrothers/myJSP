@@ -10,7 +10,7 @@ public class Criteria {
 	
 	int startNo = 1;
 	int endNo = 10;
-	
+	 
 	
 	public Criteria() {
 		// 기본생성자로 객체 호출시 페이징 초기화.

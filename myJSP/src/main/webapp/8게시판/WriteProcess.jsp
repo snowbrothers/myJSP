@@ -12,7 +12,7 @@
 <title>WriteProcess.jsp</title>
 </head>
 <body>
-
+ 
 	<%@include file="../6.세션/IsLogin.jsp"%>
 
 	<%

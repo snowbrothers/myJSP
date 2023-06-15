@@ -10,7 +10,7 @@
 <body>
 <%@include file ="../6.세션/Link.jsp" %>
 <%@include file ="../6.세션/IsLogin.jsp" %>
-<h2>회원제 게시판 - 글쓰기(Write)</h2>
+<h2>회원제 게시판 - 글s쓰기(Write)</h2>
 	<form action="WriteProcess.jsp">
     <table border="1" width="90%">
         <tr>
