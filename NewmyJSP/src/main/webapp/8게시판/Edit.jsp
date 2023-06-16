@@ -1,3 +1,6 @@
+<%@page import="dto.Board"%>
+<%@page import="dao.NewBoardDao"%>
+<%@page import="dao.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -10,18 +13,23 @@
 </head>
 <body>
 <h2>회원제 게시판 - 수정하기(Edit)</h2>
-
+<%
+	NewBoardDao dao = new NewBoardDao();
+	Board board = dao.selectOne(request.getParameter("num"));
+%>
+	<form action="EditProcess.jsp" method="post">
     <table border="1" width="90%">
         <tr>
             <td>제목</td>
             <td>
-                <input type="text" name="title" style="width: 90%;"/> 
+                <input type="text" name="title" style="width: 90%;"
+                		value="<%=board.getTitle() %>"/> 
             </td>
         </tr>
         <tr>
             <td>내용</td>
             <td>
-                <textarea name="content" style="width: 90%; height: 100px;"></textarea>
+                <textarea name="content" style="width: 90%; height: 100px;"><%=board.getContent().replace("\r\n", "<br>")%></textarea>
             </td>
         </tr>
         <tr>
