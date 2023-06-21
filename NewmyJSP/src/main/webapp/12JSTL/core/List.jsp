@@ -146,7 +146,7 @@ out.print("총건수 : " + totalCnt);
 	<%
 	if (session.getAttribute("UserId") != null && !"".equals(session.getAttribute("UserId"))) {
 	%>
-	<table border="1" width="90%">
+	<table border="1">
 		<tr align="right">
 			<td><button type="button"
 					onclick="location.href=../../6세션/'Write.jsp'">글쓰기</button></td>
