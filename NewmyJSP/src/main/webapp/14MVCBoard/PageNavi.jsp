@@ -7,10 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>6세션</title>
+<title>Insert title here</title>
 </head>
 <body>
-
 
 <c:set var="pageDto" value="${requestScope.pageDto }"></c:set>
 

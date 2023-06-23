@@ -23,11 +23,15 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		// 게시물 조회
 		MVCBoardDto view = dao.selectOne(req.getParameter("idx"));
 		
-		req.setAttribute("view", view);
+		// 조회된 게시물 저장(request 영역에)
+		req.setAttribute("dto", view);
 		
-		req.getRequestDispatcher("View.jsp").forward(req, resp);
+		// 경로가 잘못됬었음
+		// View.jsp 페이지로 포워딩
+		req.getRequestDispatcher("/14MVCBoard/View.jsp").forward(req, resp);
 		
 		
 	}

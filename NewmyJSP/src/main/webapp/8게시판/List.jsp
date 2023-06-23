@@ -113,6 +113,7 @@
 	<%
 		PageDto pageDto = new PageDto(totalCnt, criteria);
 	%>
+	
 	<table border="1" width="90%">
 		<tr>
 			<td align="center">

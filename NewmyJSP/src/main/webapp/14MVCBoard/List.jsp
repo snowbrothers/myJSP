@@ -16,16 +16,20 @@
 	총건수 : ${requestScope.totalCnt }
 	<!-- 검색창 -->
 	
+	<input type ="text" name ="pageNo">
+
 	<form method="get" name="searchForm">
 	<table border="1" width="90%">
+	<!--  페이지번호 -->
 		<tr>
 			<td align="center">
 				<select name="searchField">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="name">작성자</option>
+					<option value="title" >제목</option>
+					<!-- searchField 유지.. 검색할 당시 선택한 searchField 가 유지되도록 설정. -->
+					<option value="content" ${param.searchField eq "content" ? "selected" : "" }>내용</option>
+					<option value="name" ${param.searchField eq "name" ? "selected" : "" }>작성자</option>
 				</select>
-				<input type="text" name="searchWord"/>
+				<input type="text" name="searchWord" value="${param.searchWord }"/>
 				<input type="submit" value="검색하기"/>
 			</td>
 		
@@ -73,11 +77,34 @@
 	
 	<tr  >
 		<td colspan="9" align="center">
-		<input type="button" value="글쓰기">
+		
+		<input type="button" value="글쓰기" onclick="location.href='../mvcboard/write.do'">
 		</td>
 	</tr>
 	
 	</table>
-
+	
+	<table border="1" width="90%">
+		<tr>
+			<td align="center">
+				<%@include file="../9페이지/PageNavi.jsp" %>
+			</td>
+		</tr>
+	</table>
+	
+	
+	<table border="1" width="90%">
+		<tr>
+			<td align="center">
+				<jsp:include page="../9페이지/PageNavi.jsp">
+				
+				<jsp:param name="pageDto" value="${requestScope.pageDto }" />
+				</jsp:include>
+			</td>
+		</tr>
+	</table>
+	<!-- jsp include 방식의 경우 파라메터를 추가해줘야함. -->
+	
+	
 </body>
 </html>
