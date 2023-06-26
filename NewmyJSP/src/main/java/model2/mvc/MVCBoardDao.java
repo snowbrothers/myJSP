@@ -15,8 +15,12 @@ public class MVCBoardDao {
 	public MVCBoardDao() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
+	
 	public int update(MVCBoardDto dto) {
+		
+		//MVCBoardDto dto = new MVCBoardDto();
 		
 		int res = 0;
 		
@@ -24,7 +28,8 @@ public class MVCBoardDao {
 						+ "name = ?, "
 						+ "title = ?, "
 						+ "content = ?, "
-						+ "ofile = ? "
+						+ "ofile = ?, "
+						+ "sfile = ? "
 						+ "where idx = ?";
 		
 		try(Connection conn = DBConnPool.getConnection();
@@ -34,12 +39,13 @@ public class MVCBoardDao {
 			psmt.setString(2, dto.getTitle());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getOfile());
-			psmt.setString(5, dto.getIdx());
+			psmt.setString(5, dto.getSfile());
+			psmt.setString(6, dto.getIdx());
 			
 			res = psmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.err.println("수정중 오류발생 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			e.printStackTrace();
 		}
 		
@@ -53,21 +59,23 @@ public class MVCBoardDao {
 
 		int res = 0;
 
-		String sql = "insert into mvcboard (idx, name, title, content, pass)"
-				+ "    values (seq_board_num.nextval, ?, ?, ?, ?, ?)";
+		String sql = "insert into mvcboard "
+				+ "(idx, name, title, content, pass, ofile, sfile)"
+				+ "    values (seq_board_num.nextval, ?, ?, ?, ?, ?, ?)";
 
 		try (Connection conn = DBConnPool.getConnection(); PreparedStatement psmt = conn.prepareStatement(sql);) {
 
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getTitle());
 			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getOfile());
-			psmt.setString(5, dto.getPass());
+			psmt.setString(4, dto.getPass());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 
 			res = psmt.executeUpdate();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.err.println("게시물 입력 중 예외 발생");
 			e.printStackTrace();
 		}
 
@@ -353,6 +361,30 @@ public class MVCBoardDao {
 		}
 
 		return res;
+	}
+	
+	public int updateVisitCount(String idx) {
+		
+		int res = 0;
+		
+		String sql = "UPDATE MVCBOARD "
+				+ "SET VISITCOUNT = VISITCOUNT+1 "
+				+ "WHERE idx = ?";
+		
+		try(Connection conn = DBConnPool.getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
+			
+			psmt.setString(1, idx);
+			res = psmt.executeUpdate();
+		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res; 
+		
 	}
 
 }

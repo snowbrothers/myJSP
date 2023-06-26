@@ -70,7 +70,7 @@ public class ListController extends HttpServlet{
 		req.setAttribute("list", list);
 		
 		
-		
+		 
 		req.setAttribute("totalCnt", totalCnt);
 		
 		System.out.println("총 게시물수 :" + totalCnt);

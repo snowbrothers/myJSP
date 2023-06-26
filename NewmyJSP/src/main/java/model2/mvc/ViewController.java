@@ -31,8 +31,13 @@ public class ViewController extends HttpServlet {
 		
 		// 경로가 잘못됬었음
 		// View.jsp 페이지로 포워딩
+		
 		req.getRequestDispatcher("/14MVCBoard/View.jsp").forward(req, resp);
 		
+		// 클릭하면 조회수 + 1
+		int res = dao.updateVisitCount(req.getParameter("idx"));
+		
+		System.out.println("조회수 테스트  : " + res);
 		
 	}
 	

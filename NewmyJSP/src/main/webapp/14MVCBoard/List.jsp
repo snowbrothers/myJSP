@@ -9,6 +9,9 @@
 </head>
 <body>
 
+	<!-- 조회수 증가 - 상세보기, 파일다운로드 -->
+	<!-- 수정하기 -->
+
 	<h2>MVC 모델2 게시판</h2>
 	
 	<c:set var="fileList" value="${requestScope.list }"/>
@@ -62,15 +65,21 @@
 	
 	
 	<tr>
-		<td>${fileDto.idx }</td>
-		<td>${fileDto.name }</td>
-		<td><a href="${pageContext.request.contextPath}/mvcboard/view.do?idx=${fileDto.idx}">${fileDto.title }</a></td>
-		<td>${fileDto.content }</td>
-		<td>${fileDto.postdate }</td>
-		<td>${fileDto.ofile }</td>
-		<td>${fileDto.sfile }</td>
-		<td>${fileDto.downcount }</td>
-		<td>${fileDto.visitcount }</td>
+		<td align="center" >${fileDto.idx }</td>
+		<td align="center"> ${fileDto.name }</td>
+		<td align="center"> <a href="${pageContext.request.contextPath}/mvcboard/view.do?idx=${fileDto.idx}">${fileDto.title }</a></td>
+		<td align="center"> ${fileDto.content }</td>
+		<td align="center"> ${fileDto.postdate }</td>
+		<td align="center" >
+			<!-- 첨부파일이 있으면 다운로드 -->
+			<c:if test="${not empty fileDto.ofile }">
+				${fileDto.ofile }<a href="../mvcboard/download.do?ofile=${fileDto.ofile }&sfile=${fileDto.sfile}">
+				[Down]</a>
+			</c:if> 
+		</td>
+		<td align="center" >${fileDto.sfile }</td>
+		<td align="center" >${fileDto.downcount }</td>
+		<td align="center" >${fileDto.visitcount }</td>
 		
 	</tr>
 	</c:forEach>

@@ -33,7 +33,7 @@
 	 </c:if>
 	 
 	 
-	 <c:set var="str" value="JSP"></c:set>
+	 <c:set var="str" value="Java"></c:set>
 	 <c:if test="${str eq 'Java' }" var="result3">
 	 	문자열은 Java 입니다.
 	 </c:if>

@@ -63,6 +63,21 @@
 	
 
 	</c:if> <br>입니다.
+	
+	<h4>다중 조건문 테스트</h4>
+	
+	<c:set var="str" value="JSTL"/>
+
+<c:choose>
+	<c:when test="${str eq 'JSTL'}" >
+		${str}은 JSTL이다.
+	</c:when>
+
+<c:otherwise>
+	${str}은 JSTL이 아니다.
+</c:otherwise>
+
+</c:choose>
 
 </body>
 </html>

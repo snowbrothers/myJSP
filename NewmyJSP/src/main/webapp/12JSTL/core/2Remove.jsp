@@ -53,5 +53,15 @@
 		<li>applicationScope : ${applicationScope.scopeVar }</li>
 		
 	</ul> 
+	
+	<h4>삭제 연습</h4>
+	
+	<c:set var="varvar" value="삭제되기싫어" scope="request"></c:set>
+	
+	삭제 전 출력 : varvar = ${varvar }
+	
+	<c:remove var="varvar" scope="request"/>
+	
+	삭제 후 출력 : varvar =${varvar }
 </body>
 </html>

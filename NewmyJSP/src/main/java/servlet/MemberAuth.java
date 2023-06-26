@@ -36,29 +36,37 @@ public class MemberAuth extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String admin_id = this.getInitParameter("admin_id");
+		
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
-		
 		Member member = dao.login(id, pw);
 		
 		if(member != null) {
+			req.setAttribute("authMessage"
+					, member.getName() + "회원님 반갑습니다.");
 			
-			req.setAttribute("authMessage", "Hello, " + member.getName());
+			if(member.getId().equals(admin_id)) {
+				req.setAttribute("authMessage", admin_id + "님은 관리자 입니다.");
+			}
 			
 		} else {
 			req.setAttribute("authMessage"
-					,  "login fail");
+					, member.getName() + "로그인 실패");
 		}
 		
+		req.getRequestDispatcher("/13서블릿/MemberAuth.jsp")
+						.forward(req, resp);
 		
-//		req.getRequestDispatcher("/13서블릿/MemberAuth.jsp")
-//								.forward(req, resp);
 		
-		String str = URLEncoder.encode("./MemberAuth.jsp");
-		resp.sendRedirect(str);
+//		TODO : sendredirect 경로 확인
+//		String str = URLEncoder.encode("MemberAuth.jsp");
+//		str = URLEncoder.encode("../13서블릿/MemberAuth.jsp");
+//		resp.sendRedirect(str);
+	}
 		
 	}
 	
 	
 
-}
+

@@ -28,7 +28,7 @@
 </head>
 <h2>파일 첨부형 게시판 - 수정하기(Edit)</h2>
 <form name="writeFrm" method="post" enctype="multipart/form-data" action="../mvcboard/edit.do" onsubmit="return validateForm(this);">
-<input type="hidden" name="idx" value="${ dto.idx }"/>
+<input type="text" name="idx" value="${ dto.idx }"/>
 <input type="hidden" name="prevOfile" value="${ dto.ofile }" />
 <input type="hidden" name="prevSfile" value="${ dto.sfile }" />
     
